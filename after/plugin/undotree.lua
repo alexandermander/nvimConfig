@@ -1,2 +1,1 @@
-vim.keymap.set('n', '<leader>z', vim.cmd.UndotreeToggle)
-
+vim.g.undotree_DiffAutoOpen = 0
