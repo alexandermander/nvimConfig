@@ -14,7 +14,10 @@ use {
 				local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 				ts_update()
 			end,}
-
+use {
+'nvim-lualine/lualine.nvim',
+requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+}
   use 'OmniSharp/omnisharp-vim'
   use {'neoclide/coc.nvim', branch = 'release'}
   use { 'ThePrimeagen/vim-be-good' }
