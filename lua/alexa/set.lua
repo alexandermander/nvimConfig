@@ -26,4 +26,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "0"
+<<<<<<< HEAD
 vim.api.nvim_set_keymap('i', '<C-Del>', '<C-o>dw', {noremap = true})
+=======
+vim.api.nvim_set_keymap('i', '<C-Del>', '<C-o>dw', {noremap = true})
+>>>>>>> 105ed87e28a12572cc99d320545d5d8a3fc61481
