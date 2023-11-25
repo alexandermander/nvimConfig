@@ -34,4 +34,3 @@ vim.keymap.set('i', '<C-Del>', '<C-o>dw')
 
 
 vim.keymap.set("n","<leader>z",vim.cmd.UndotreeToggle)
-
