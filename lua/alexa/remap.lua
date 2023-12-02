@@ -34,6 +34,7 @@ vim.keymap.set('i', '<C-Del>', '<C-o>dw')
 
 vim.keymap.set('n', '<leader>gc', function()
     local input = vim.fn.input("Commit message: ")
+    input = '"' .. input .. '"'
     --use term to add fikles
     vim.cmd("term git add .")
     vim.cmd("term git commit -m " .. input)
