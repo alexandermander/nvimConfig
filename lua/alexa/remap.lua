@@ -32,5 +32,14 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set('i', '<C-Del>', '<C-o>dw')
 
 
+vim.keymap.set('n', '<leader>gc', function()
+    local input = vim.fn.input("Commit message: ")
+    --create input as a string
+    input = "'" .. input .. "'"
+    vim.cmd("!git add .")
+    vim.cmd("!git commit -m " .. input)
+end)
+
+
 
 vim.keymap.set("n","<leader>z",vim.cmd.UndotreeToggle)

@@ -7,7 +7,7 @@ use 'wbthomason/packer.nvim'
 
 	  requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use 'tikhomirov/vim-glsl'
+  use 'nvim-tree/nvim-web-devicons'
 use {
 			'nvim-treesitter/nvim-treesitter',
 			run = function()
