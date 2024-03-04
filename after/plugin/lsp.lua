@@ -1,6 +1,6 @@
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-
+-- set space key
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
@@ -15,7 +15,8 @@ end
 -- luasnip setup
 local luasnip = require 'luasnip'
 
-
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.svelte.setup{}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -37,14 +38,14 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<leder>m', vim.lsp.buf.add_workspace_folder, opts)
-    vim.keymap.set('n', '<leder>wr', vim.lsp.buf.remove_workspace_folder, opts)
-    vim.keymap.set('n', '<leder>ml', function()
+    vim.keymap.set('n', '<space>wm', vim.lsp.buf.add_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+    vim.keymap.set('n', '<space>wml', function()
       print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, opts)
-    vim.keymap.set('n', '<leder>D', vim.lsp.buf.type_definition, opts)
-    vim.keymap.set('n', '<leder>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set({ 'n', 'v' }, '<leder>ca', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+    vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
   end,
 })
@@ -52,9 +53,12 @@ local cmp = require 'cmp'
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+      completion = cmp.config.window.bordered("rounded"),
+      documentation = cmp.config.window.bordered(),
+    },
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
     ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
