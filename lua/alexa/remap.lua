@@ -21,11 +21,34 @@ vim.keymap.set("n","<leader>y", '"+y')
 --    vim.cmd("startinsert")
 --
 --end)
+--
+vim.keymap.set("n","<leader>h", function()
+    -- if hlsearch is enabled  print "hlsearch is enabled" and disable it
+    vim.cmd("set hlsearch!")
+    print("hl: ".. (vim.o.hlsearch and "enabled" or "disabled"))
+end)
+
+--Ttest--
+
+--vim keymaps where when i press <leader>re it will replace the current * with a word i type in the command line
+vim.keymap.set("n","<leader>re", function()
+    local input = vim.fn.input("Replace: ")
+    if input == nil then
+        return
+    end
+    vim.cmd(":%s//" .. input .. "/g")
+end)
+
+vim.keymap.set("i","jj","<Esc>")
+
+--Ttest--sander is in a mode
 
 vim.keymap.set("n","<leader>w", vim.cmd.w)
 vim.keymap.set("n","<leader><leader>", vim.cmd.so)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+--Ttest--
+--Ttest--
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set('i', '<C-Del>', '<C-o>dw')
